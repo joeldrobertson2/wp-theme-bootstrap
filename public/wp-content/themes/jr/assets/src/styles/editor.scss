@@ -1,0 +1,17 @@
+// Vendor dependencies
+@import "breakpoint";
+
+// Project dependencies
+@import "global/variables";
+@import "global/functions";
+@import "global/mixins";
+
+// Base
+@import "base/fonts";
+
+// Components
+@import "components/embed";
+
+body {
+	font-family: $font-sans;
+}
