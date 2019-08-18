@@ -11,6 +11,7 @@ namespace jr\Theme;
 
 require_once __DIR__ . '/inc/menus.php';
 require_once __DIR__ . '/inc/template-tags.php';
+require_once __DIR__ . '/inc/acf-gutenberg.php';
 
 add_action( 'after_setup_theme',  __NAMESPACE__ . '\\setup' );
 add_action( 'after_setup_theme',  __NAMESPACE__ . '\\content_width', 0 );
