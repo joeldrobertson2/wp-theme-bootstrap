@@ -20,12 +20,11 @@ if ( have_posts() ) :
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<?php mailchimp_render_form(); ?>
 				<div class="posts">
 					<?php
 					while ( have_posts() ) :
 						the_post();
-						get_template_part( 'partials/content' );
+						the_content();
 					endwhile;
 					?>
 				</div>
