@@ -106,3 +106,7 @@ wp-content/mysql.sql
 *.asf
 *.wmv
 *.avi
+
+# dist and vendor
+wp-content/themes/**/assets/dist
+vendor
