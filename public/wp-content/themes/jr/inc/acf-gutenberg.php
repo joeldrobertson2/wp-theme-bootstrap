@@ -42,6 +42,7 @@ function init_blocks() {
 			'category'        => 'malt-blocks',
 			'icon'            => 'video-alt3',
 			'keywords'        => [ 'test', 'section' ],
+			'mode'            => 'edit',
 			'supports'        => [
 				'align' => false,
 			],
