@@ -23,21 +23,21 @@ add_filter( 'post_thumbnail_html', __NAMESPACE__ . '\\wrap_post_thumbnail', 10, 
  * @return string Updated image attributes if the image has the lazyload class.
  */
 function modify_image_attributes( $attr, $attachment, $size ) {
-    if ( false === strpos( $attr['class'], 'lazyload' ) ) {
-        return $attr;
-    }
+	if ( false === strpos( $attr['class'], 'lazyload' ) ) {
+		return $attr;
+	}
 
-    $one_pixel_gif = get_placeholder_src();
+	$one_pixel_gif = get_placeholder_src();
 
-    if ( isset( $attr['srcset'] ) ) {
-        $attr['data-srcset'] = $attr['srcset'];
-        $attr['srcset']      = $one_pixel_gif;
-    } else {
-        $attr['data-src'] = $attr['src'];
-        $attr['src']      = $one_pixel_gif;
-    }
+	if ( isset( $attr['srcset'] ) ) {
+		$attr['data-srcset'] = $attr['srcset'];
+		$attr['srcset']      = $one_pixel_gif;
+	} else {
+		$attr['data-src'] = $attr['src'];
+		$attr['src']      = $one_pixel_gif;
+	}
 
-    return $attr;
+	return $attr;
 }
 
 /**
@@ -54,27 +54,27 @@ function modify_image_attributes( $attr, $attachment, $size ) {
  * @return string Post thumbnail markup wrapped in a ratio container.
  */
 function wrap_post_thumbnail( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-    if ( $post_thumbnail_id && isset( $attr['wrapper'] ) || isset( $attr['ratio'] ) ) {
-        $replacements = [];
-        $attr_keys    = [
-            'wrapper',
-            'ratio',
-        ];
+	if ( $post_thumbnail_id && isset( $attr['wrapper'] ) || isset( $attr['ratio'] ) ) {
+		$replacements = [];
+		$attr_keys    = [
+			'wrapper',
+			'ratio',
+		];
 
-        foreach ( $attr_keys as $key ) {
-            if ( isset( $attr[ $key ] ) ) {
-                $replacements[] = $key . '=' . $attr[ $key ] . '"';
-            }
-            $$key = ( isset( $attr[ $key ] ) ) ? $attr[ $key ] : false;
-        }
+		foreach ( $attr_keys as $key ) {
+			if ( isset( $attr[ $key ] ) ) {
+				$replacements[] = $key . '="' . $attr[ $key ] . '"';
+			}
+			$$key = ( isset( $attr[ $key ] ) ) ? $attr[ $key ] : false;
+		}
 
-        // Remove the attributes used to flag that thumbnail should be wrapped.
-        $html = str_replace( $replacements, '', $html );
+		// Remove the attributes used to flag that thumbnail should be wrapped.
+		$html = str_replace( $replacements, '', $html );
 
-        return get_image_wrapper( $html, $post_thumbnail_id, $size, $wrapper, $ratio );
-    }
+		return get_image_wrapper( $html, $post_thumbnail_id, $size, $wrapper, $ratio );
+	}
 
-    return $html;
+	return $html;
 }
 
 /**
@@ -88,14 +88,14 @@ function wrap_post_thumbnail( $html, $post_id, $post_thumbnail_id, $size, $attr 
  * @return string Image markup wrapped in a ratio container.
  */
 function get_image_wrapper( $html, $attachment_id, $size, $class, $has_ratio = false ) {
-    if ( $has_ratio ) {
-        $image = wp_get_attachment_image_src( $attachment_id, $size );
-        $ratio = ( $image[2] / $image[1] ) * 100;
-    }
+	if ( $has_ratio ) {
+		$image = wp_get_attachment_image_src( $attachment_id, $size );
+		$ratio = ( $image[2] / $image[1] ) * 100;
+	}
 
-    $class = ( is_string( $class ) ) ? $class : 'u-ratio';
-    $style = ( isset( $ratio ) ) ? ' style="padding-bottom:' . esc_attr( $ratio ) . '%"' : '';
-    return '<div class="' . esc_attr( $class ) . '"' . $style . '>' . $html . '</div>';
+	$class = ( is_string( $class ) ) ? $class : 'u-ratio';
+	$style = ( isset( $ratio ) ) ? ' style="padding-bottom:' . esc_attr( $ratio ) . '%"' : '';
+	return '<div class="' . esc_attr( $class ) . '"' . $style . '>' . $html . '</div>';
 }
 
 /**
@@ -104,7 +104,7 @@ function get_image_wrapper( $html, $attachment_id, $size, $class, $has_ratio = f
  * @return base64 encoded image src.
  */
 function get_placeholder_src() {
-    return 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+	return 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 }
 
 /**
@@ -126,6 +126,6 @@ function get_wrapped_attachment_image( $attachment_id, $size, $attr = '' ) {
 	);
 
 	if ( $image ) {
-        return wrap_post_thumbnail( $image, null, $attachment_id, $size, $attr );
+		return wrap_post_thumbnail( $image, null, $attachment_id, $size, $attr );
 	}
 }
