@@ -54,6 +54,10 @@ function modify_image_attributes( $attr, $attachment, $size ) {
  * @return string Post thumbnail markup wrapped in a ratio container.
  */
 function wrap_post_thumbnail( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+	if ( ! $post_thumbnail_id ) {
+		return;
+	}
+
 	if ( $post_thumbnail_id && isset( $attr['wrapper'] ) || isset( $attr['ratio'] ) ) {
 		$replacements = [];
 		$attr_keys    = [
