@@ -17,6 +17,7 @@ wp-content/advanced-cache.php
 wp-content/wp-cache-config.php
 wp-content/cache/*
 wp-content/cache/supercache/*
+wp-content/plugins/*
 ​
 # wpengine specific
 .smushit-status
@@ -109,4 +110,5 @@ wp-content/mysql.sql
 
 # dist and vendor
 wp-content/themes/**/assets/dist
+wp-content/debug.log
 vendor
