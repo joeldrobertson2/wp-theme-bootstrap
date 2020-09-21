@@ -10,17 +10,14 @@ const notify 			= require( 'gulp-notify' );
 const os 				= require( 'os' );
 const postcss 			= require( 'gulp-postcss' );
 const postcssImport 	= require( 'postcss-import' );
-const rev 				= require( 'gulp-rev' );
-const revCssUrl 		= require( 'gulp-rev-css-url' );
 const rollup 			= require( 'rollup' );
 const rollupBabel 		= require( 'rollup-plugin-babel' );
 const rollupCommonjs 	= require( 'rollup-plugin-commonjs' );
 const rollupNodeResolve = require( 'rollup-plugin-node-resolve' );
 const rollupUglify 		= require( 'rollup-plugin-uglify' );
 const sass 				= require( 'gulp-sass' );
-const sassLint 			= require( 'gulp-sass-lint' );	
+const sassLint 			= require( 'gulp-sass-lint' );
 const sourcemaps 		= require( 'gulp-sourcemaps' );
-const gulpSvgSprite 	= require( 'gulp-svg-sprite' );
 
 const server = browserSync.create();
 const isProduction = process.env.NODE_ENV === 'production';
@@ -42,11 +39,7 @@ const paths = {
 		exit: `${basePaths.dest}scripts/theme.bundle.js`,
 	},
 	images: {
-		src: `${basePaths.src}images/**/*.{jpg,gif,png,svg}`,
-		dest: `${basePaths.dest}images`,
-	},
-	svgsprite: {
-		src: `${basePaths.src}icons/**/*.svg`,
+		src: `${basePaths.src}images/**/*.{jpg,gif,png}`,
 		dest: `${basePaths.dest}images`,
 	},
 	fonts: {
@@ -102,22 +95,10 @@ const config = {
 		imagemin.optipng( { optimizationLevel: 5 } ),
 		imagemin.svgo( { plugins: [{ removeViewBox: true }] } ),
 	],
-	svgsprite: {
-		mode: {
-			symbol: {
-				dest: '.',
-				sprite: 'sprite.symbol.svg',
-			},
-		},
-	},
 	browsersync: {
-		proxy: 'https://dev.wp-bootstrap.com/',
+		proxy: 'http://dev.wp-bootstrap.com',
 		open: false,
 		notify: false,
-		https: {
-			key: `${paths.certs}key.pem`,
-			cert: `${paths.certs}cert.pem`,
-		},
 	},
 };
 
@@ -185,36 +166,15 @@ function images() {
 		.pipe( gulp.dest( paths.images.dest ) );
 }
 
-function svgSprite() {
-	return gulp
-		.src( paths.svgsprite.src )
-		.pipe( gulpSvgSprite( config.svgsprite ) )
-		.pipe( gulp.dest( paths.svgsprite.dest ) );
-}
-
 function fonts() {
 	return gulp.src( paths.fonts.src ).pipe( gulp.dest( paths.fonts.dest ) );
-}
-
-function revisionAssets() {
-	return gulp
-		.src( paths.rev, {
-			allowEmpty: true,
-			base: basePaths.dest,
-		} )
-		.pipe( rev() )
-		.pipe( revCssUrl() )
-		.pipe( gulp.dest( basePaths.dest ) )
-		.pipe( rev.manifest() )
-		.pipe( gulp.dest( basePaths.dest ) );
 }
 
 const buildStyles = gulp.series( lintSass, styles );
 const buildScripts = gulp.series( lintScripts, scripts );
 const build = gulp.series(
 	clean,
-	gulp.parallel( buildStyles, buildScripts, images, svgSprite, fonts ),
-	revisionAssets,
+	gulp.parallel( buildStyles, buildScripts, images, fonts ),
 );
 
 function reload( done ) {
@@ -227,14 +187,12 @@ function serve() {
 	gulp.watch( paths.styles.src, gulp.series( buildStyles ) );
 	gulp.watch( paths.scripts.src, gulp.series( buildScripts, reload ) );
 	gulp.watch( paths.images.src, gulp.series( images, reload ) );
-	gulp.watch( paths.svgsprite.src, gulp.series( svgSprite, reload ) );
 	gulp.watch( paths.templates, gulp.series( reload ) );
 }
 
 gulp.task( 'styles', buildStyles );
 gulp.task( 'scripts', buildScripts );
 gulp.task( 'images', images );
-gulp.task( 'svgsprite', svgSprite );
 gulp.task( 'watch', serve );
 gulp.task( 'build', build );
 gulp.task( 'default', build );
