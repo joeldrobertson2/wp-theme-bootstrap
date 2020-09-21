@@ -44,15 +44,25 @@
         "rollup-plugin-uglify": "^4.0.0"
     },
     "dependencies": {
-        "lazysizes": "^5.1.1",
+        "core-js": "^3.6.5",
         "normalize.css": "^8.0.0",
+        "regenerator-runtime": "^0.13.7",
         "svg4everybody": "^2.1.9"
     },
     "browserslist": [
-        "> 0.5%",
-        "last 2 version",
-        "not dead",
-        "IE 10",
-        "Firefox ESR"
-    ]
+        "> 0.2%",
+        "last 1 version",
+        "IE 11"
+    ],
+    "babel": {
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "useBuiltIns": "entry",
+                    "corejs": 3
+                }
+            ]
+        ]
+    }
 }
