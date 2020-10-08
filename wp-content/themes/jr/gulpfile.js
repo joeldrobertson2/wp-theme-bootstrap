@@ -7,7 +7,6 @@ const gulp 				= require( 'gulp' );
 const imagemin 			= require( 'gulp-imagemin' );
 const newer 			= require( 'gulp-newer' );
 const notify 			= require( 'gulp-notify' );
-const os 				= require( 'os' );
 const postcss 			= require( 'gulp-postcss' );
 const postcssImport 	= require( 'postcss-import' );
 const rollup 			= require( 'rollup' );
@@ -46,15 +45,7 @@ const paths = {
 		src: `${basePaths.src}fonts/*.{woff,woff2}`,
 		dest: `${basePaths.dest}fonts`,
 	},
-	certs: `${os.homedir()}/Sites/config/certs/localhost/`,
 	templates: './**/*.php',
-	// String interpolation or concatenation doesn't work here.
-	rev: [
-		'./assets/dist/styles/*.css',
-		'./assets/dist/scripts/*.js',
-		'./assets/dist/images/*.{png,gif,jpg,svg}',
-		'./assets/dist/fonts/*.{woff,woff2}',
-	],
 };
 
 const config = {
