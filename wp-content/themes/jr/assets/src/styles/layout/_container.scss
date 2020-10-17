@@ -1,0 +1,23 @@
+.container,
+.containerFluid {
+	position: relative;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: $gutter-size;
+	padding-left: $gutter-size;
+}
+
+.container {
+	@include respond-to( tablet-portrait ) {
+		width: $width-tablet-portrait;
+	}
+
+	@include respond-to( tablet-landscape ) {
+		width: $width-tablet-landscape;
+	}
+
+	@include respond-to( desktop ) {
+		width: $width-desktop;
+	}
+}
