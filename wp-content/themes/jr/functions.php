@@ -14,8 +14,6 @@ require_once __DIR__ . '/inc/template-tags.php';
 require_once __DIR__ . '/inc/acf-gutenberg.php';
 
 add_action( 'after_setup_theme',  __NAMESPACE__ . '\\setup' );
-add_action( 'after_setup_theme',  __NAMESPACE__ . '\\content_width', 0 );
-add_action( 'after_switch_theme', __NAMESPACE__ . '\\theme_activation' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
 
 /**
@@ -37,27 +35,9 @@ function setup() {
 	// Register navigation menus.
 	register_nav_menu( 'nav-primary', 'Main navigation' );
 	register_nav_menu( 'nav-secondary', 'Secondary navigation' );
-}
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function content_width() {
-	$GLOBALS['content_width'] = 0;
-}
-
-/**
- * Set default options for the theme on activation.
- */
-function theme_activation() {
-	// Set image defaults.
-	update_option( 'image_default_align', 'left' );
-	update_option( 'image_default_link_type', 'none' );
-	update_option( 'image_default_size', 'medium' );
+	// Allow wide alignmennt for blocks.
+	add_theme_support( 'align-wide' );
 }
 
 /**
