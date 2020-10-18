@@ -11,13 +11,14 @@ get_header();
 if ( have_posts() ) :
 	?>
 	<div class="container">
-		<?php
-		while ( have_posts() ) : ?>
-		<?php
-			the_post();
-			the_content();
-		endwhile;
-		?>
+		<div class="wrapper">
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				the_content();
+			endwhile;
+			?>
+		</div>
 	</div>
 	<?php
 endif;

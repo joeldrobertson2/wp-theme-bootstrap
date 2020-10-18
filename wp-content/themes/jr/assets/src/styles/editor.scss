@@ -6,12 +6,14 @@
 @import "global/functions";
 @import "global/mixins";
 
-// Base
-@import "base/fonts";
+.wp-block {
+	max-width: $width-wrapper;
 
-// Components
-@import "components/embed";
+	&[data-align="wide"] {
+		max-width: $width-wide;
+	}
 
-body {
-	font-family: $font-sans;
+	&[data-align="full"] {
+		max-width: none;
+	}
 }

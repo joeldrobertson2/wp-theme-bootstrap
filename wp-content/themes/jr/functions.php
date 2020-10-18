@@ -38,6 +38,10 @@ function setup() {
 
 	// Allow wide alignmennt for blocks.
 	add_theme_support( 'align-wide' );
+
+	// Load editor style sheet.
+	add_theme_support( 'editor-styles' );
+	add_editor_style( 'assets/dist/styles/editor.css' );
 }
 
 /**

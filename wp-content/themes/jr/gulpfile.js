@@ -87,7 +87,7 @@ const config = {
 		imagemin.svgo( { plugins: [{ removeViewBox: true }] } ),
 	],
 	browsersync: {
-		proxy: 'http://dev.wp-bootstrap.com',
+		proxy: 'http://dev.bootstrap.com',
 		open: false,
 		notify: false,
 	},

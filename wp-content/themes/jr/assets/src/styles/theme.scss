@@ -17,13 +17,9 @@
 @import "utilities/ratio";
 
 // Layout
+@import "layout/align";
 @import "layout/container";
+@import "layout/wrapper";
 
 // Components
-@import "components/btn";
-@import "components/embed";
-@import "components/lazyload";
-@import "components/navMain";
 @import "components/screenReaderText";
-@import "components/siteTitle";
-@import "components/svgIcon";
