@@ -2,11 +2,12 @@
 @import "breakpoint";
 
 // Project dependencies
-@import "global/variables";
 @import "global/functions";
 @import "global/mixins";
+@import "global/variables";
 
-.wp-block {
+// Block widths
+.wp-block {	
 	max-width: $width-wrapper;
 
 	&[data-align="wide"] {
@@ -15,5 +16,68 @@
 
 	&[data-align="full"] {
 		max-width: none;
+	}
+}
+
+// Typography
+body {
+	color: $color-base;
+	font-family: $font-sans;
+}
+
+p,
+ul,
+ol {
+	font-size: $font-size-base;
+	line-height: 1.6;
+}
+
+a {
+	color: $color-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+h1 {
+	font-size: $font-size-xl;
+
+	@include respond-to( tablet-portrait ) {
+		font-size: $font-size-xxl;
+	}
+}
+
+h2 {
+	font-size: $font-size-xl;
+}
+
+h3 {
+	font-size: $font-size-lg;
+}
+
+h4 {
+	font-size: $font-size-md;
+}
+
+h5,
+h6 {
+	font-size: $font-size-base;
+}
+
+// Page title
+.editor-post-title__block {
+	.editor-post-title__input {
+		font-size: $font-size-xl;
+
+		@include respond-to( tablet-portrait ) {
+			font-size: $font-size-xxl;
+		}
 	}
 }

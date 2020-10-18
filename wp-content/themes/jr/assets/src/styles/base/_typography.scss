@@ -1,0 +1,58 @@
+body {
+	color: $color-base;
+	font-family: $font-sans;
+}
+
+p,
+ul,
+ol {
+	font-size: $font-size-base;
+	line-height: 1.6;
+}
+
+ul,
+ol {
+	padding: 0 0 0 1em;
+}
+
+a {
+	color: $color-base;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 700;
+}
+
+h1 {
+	font-size: $font-size-xl;
+
+	@include respond-to( tablet-portrait ) {
+		font-size: $font-size-xxl;
+	}
+}
+
+h2 {
+	font-size: $font-size-xl;
+}
+
+h3 {
+	font-size: $font-size-lg;
+}
+
+h4 {
+	font-size: $font-size-md;
+}
+
+h5,
+h6 {
+	font-size: $font-size-base;
+}
