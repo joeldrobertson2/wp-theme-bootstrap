@@ -17,7 +17,7 @@ $width-tablet-landscape: 970px;
 $width-desktop: 1170px;
 
 $width-wrapper: 768px;
-$width-wide: 920px;
+$width-wide: 1000px;
 
 $gutter-size: 20px;
 $gutter-size-x2: $gutter-size * 2;
@@ -38,3 +38,8 @@ $color-base: #333;
 $color-white: #fff;
 $color-whiteSmoke: #efefef;
 $color-ceSoir: #89609e;
+
+$colors: ( base, $color-base ),
+		 ( white, $color-white ),
+		 ( whitesmoke, $color-whiteSmoke ),
+		 ( cesoir, $color-ceSoir );

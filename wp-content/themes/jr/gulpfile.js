@@ -50,7 +50,7 @@ const paths = {
 
 const config = {
 	sass: {
-		outputStyle: 'compressed',
+		// outputStyle: 'compressed',
 		includePaths: [
 			'./node_modules/breakpoint-sass/stylesheets/',
 			'./node_modules/normalize.css/',

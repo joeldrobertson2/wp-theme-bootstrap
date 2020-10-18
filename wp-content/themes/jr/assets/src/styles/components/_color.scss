@@ -1,9 +1,4 @@
-$colors: ( "base", $color-base ),
-		 ( "white", $color-white )
-		 ( "whitesmoke", $color-whiteSmoke ),
-		 ( "cesoir", $color-ceSoir );
-
- @each $name, $color in $colors {
+@each $name, $color in $colors {
 
 	.has-#{$name}-color {
 		color: $color;
@@ -13,7 +8,12 @@ $colors: ( "base", $color-base ),
 		background-color: $color;
 	}
 
+	// Override cover dim color
 	.wp-block-cover.has-background-dim.has-#{$name}-background-color {
 		background-color: $color;
 	}
+
+	// .wp-block-button.is-style-outline .wp-block-button__link.has-#{$name}-color {
+	// 	color: $color;
+	// }
 }
