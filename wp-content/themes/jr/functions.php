@@ -42,6 +42,33 @@ function setup() {
 	// Load editor style sheet.
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'assets/dist/styles/editor.css' );
+
+	// Color Pallete.
+	add_theme_support(
+		'editor-color-palette',
+		[
+			[
+				'name'  => 'Night Rider',
+				'slug'  => 'nightrider',
+				'color' => '#333',
+			],
+			[
+				'name'  => 'White',
+				'slug'  => 'white',
+				'color' => '#fff',
+			],
+			[
+				'name'  => 'White Smoke',
+				'slug'  => 'whitesmoke',
+				'color' => '#efefef',
+			],
+			[
+				'name'  => 'Ce Soir',
+				'slug'  => 'cesoir',
+				'color' => '#89609E',
+			],
+		]
+	);
 }
 
 /**
