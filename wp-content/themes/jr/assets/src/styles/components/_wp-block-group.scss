@@ -1,3 +1,8 @@
 .wp-block-group {
 	padding: 1.25rem $gutter-size;
 }
+
+.wp-block-group__inner-container {
+	max-width: $width-wrapper;
+	margin: 0 auto;
+}
