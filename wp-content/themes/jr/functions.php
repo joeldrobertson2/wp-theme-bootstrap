@@ -42,6 +42,7 @@ function setup() {
 	// Load editor style sheet.
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'assets/dist/styles/editor.css' );
+	// add_editor_style( enqueue_google_fonts() );
 
 	// Color Pallete.
 	add_theme_support(
