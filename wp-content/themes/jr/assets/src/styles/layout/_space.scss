@@ -1,0 +1,22 @@
+.space--small {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.space--medium {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
+.space--large {
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+}
+
+.space--noBottomMargin {
+	margin-bottom: 0 !important; //sass-lint:disable-line no-important
+}
+
+.space--noTopMargin {
+	margin-top: 0 !important; //sass-lint:disable-line no-important
+}

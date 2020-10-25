@@ -6,6 +6,9 @@
 @import "global/mixins";
 @import "global/variables";
 
+// Layout
+@import "layout/space";
+
 // Block widths
 .wp-block {	
 	max-width: $width-wrapper;
