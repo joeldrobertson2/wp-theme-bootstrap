@@ -36,3 +36,28 @@
 		}
 	}
 }
+
+.wp-block-button.is-style-outline {
+	.wp-block-button__link {
+		border: 2px solid $color-base;
+		background-color: transparent;
+		color: $color-base;
+
+		@each $name, $color in $colors {
+
+			&.has-#{$name}-color {
+				border: 2px solid $color;
+				color: $color;
+			}
+
+			&.has-#{$name}-background-color {
+				background-color: $color;
+			}
+
+			&.has-#{$name}-background-color:hover,
+			&.has-#{$name}-background-color:focus {
+				background-color: darken( $color, 20% );
+			}
+		}
+	}
+}
