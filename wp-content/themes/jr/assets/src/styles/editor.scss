@@ -77,10 +77,6 @@ h6 {
 // Page title
 .editor-post-title__block {
 	.editor-post-title__input {
-		font-size: $font-size-xl;
-
-		@include respond-to( tablet-portrait ) {
-			font-size: $font-size-xxl;
-		}
+		font-size: $font-size-lg;
 	}
 }

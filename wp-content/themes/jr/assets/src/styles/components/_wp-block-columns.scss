@@ -1,4 +1,12 @@
-.wp-block-columns.alignwide {
-	padding-right: $gutter-size;
-	padding-left: $gutter-size;
+.wp-block-columns {
+	&.alignwide {
+		padding-right: $gutter-size;
+		padding-left: $gutter-size;
+	}
+}
+
+.wp-block-column {
+	> *:last-child {
+		margin-bottom: 0;
+	}
 }

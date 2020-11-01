@@ -1,22 +1,24 @@
+//sass-lint:disable no-important
+
 .space--small {
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	margin-top: 2rem !important;
+	margin-bottom: 2rem !important;
 }
 
 .space--medium {
-	margin-top: 3rem;
-	margin-bottom: 3rem;
+	margin-top: 3rem !important;
+	margin-bottom: 3rem !important;
 }
 
 .space--large {
-	margin-top: 4rem;
-	margin-bottom: 4rem;
+	margin-top: 4rem !important;
+	margin-bottom: 4rem !important;
 }
 
 .space--noBottomMargin {
-	margin-bottom: 0 !important; //sass-lint:disable-line no-important
+	margin-bottom: 0 !important; 
 }
 
 .space--noTopMargin {
-	margin-top: 0 !important; //sass-lint:disable-line no-important
+	margin-top: 0 !important;
 }
