@@ -7,11 +7,12 @@ const { InspectorControls } = wp.editor;
 const { PanelBody, CheckboxControl, RadioControl } = wp.components;
 
 const spacingBlocks = [
-  // 'core/columns',
-  // 'core/image',
   // 'core/buttons',
   // 'core/gallery',
+  'core/image',
+  'core/columns',
   'core/group',
+  'core/cover',
 ];
 
 const addSpacingAttributes = (settings, name) => {
@@ -56,18 +57,20 @@ const addInspectorControls = createHigherOrderComponent((BlockEdit) => {
       return <BlockEdit {...props} />;
     }
 
-    const className = classNames(
-      { 'space--noTopMargin': topMargin },
-      { 'space--noBottomMargin': bottomMargin },
-      { 'space--small': spacing === 'small' },
-      { 'space--medium': spacing === 'medium' },
-      { 'space--large': spacing === 'large' },
-    );
+    // const className = classNames(
+    //   { 'space--noTopMargin': topMargin },
+    //   { 'space--noBottomMargin': bottomMargin },
+    //   { 'space--small': spacing === 'small' },
+    //   { 'space--medium': spacing === 'medium' },
+    //   { 'space--large': spacing === 'large' },
+    // );
 
-    const newProps = {
-      ...props,
-      className,
-    };
+    // const newProps = {
+    //   ...props,
+    //   className,
+    // };
+
+    // console.log(newProps);
 
     return (
       <Fragment>
@@ -101,11 +104,37 @@ const addInspectorControls = createHigherOrderComponent((BlockEdit) => {
             />
           </PanelBody>
         </InspectorControls>
-        <BlockEdit {...newProps} />
+        <BlockEdit {...props} />
       </Fragment>
     );
   };
 }, 'addInspectorControls');
+
+const addEditorClasses = createHigherOrderComponent((BlockListBlock) => {
+  return (props) => {
+    const {
+      attributes: {
+        topMargin, spacing, bottomMargin,
+      },
+      name,
+    } = props;
+
+    if (!spacingBlocks.includes(name)) {
+      return <BlockListBlock {...props} />;
+    }
+
+    const spaceClasses = [
+      { 'space--noTopMargin': topMargin },
+      { 'space--noBottomMargin': bottomMargin },
+      { 'space--small': spacing === 'small' },
+      { 'space--medium': spacing === 'medium' },
+      { 'space--large': spacing === 'large' },
+    ];
+
+
+    return <BlockListBlock {...props} className={classNames(spaceClasses)} />;
+  };
+}, 'addEditorClasses');
 
 function saveSpacingClasses(extraProps, blockType, attributes) {
   if (!spacingBlocks.includes(blockType.name)) {
@@ -127,6 +156,12 @@ function saveSpacingClasses(extraProps, blockType, attributes) {
     className: classNames(extraProps.className, spaceClasses),
   };
 }
+
+wp.hooks.addFilter(
+  'editor.BlockListBlock',
+  'jr-blocks/spacing',
+  addEditorClasses,
+);
 
 wp.hooks.addFilter(
   'blocks.getSaveContent.extraProps',
